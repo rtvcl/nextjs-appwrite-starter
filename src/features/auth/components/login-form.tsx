@@ -1,15 +1,15 @@
 import { Button, Checkbox, Divider, Input, Link } from "@nextui-org/react"
 import NextLink from "next/link"
+import { createSession } from "../api/login-email-action"
 
 const LoginForm = () => {
     return (
         <>
             <h2 className="text-3xl font-semibold max-w-sm mx-auto w-full px-4 mb-8">Sign in to <br /> NextJS Appwrite Starter</h2>
-
-            <form className="w-full max-w-sm mx-auto p-4 flex flex-col items-center justify-between gap-4">
-
-                <Input type="email" label="Email" />
-                <Input type="password" label="Password" />
+            <form action={createSession} className="w-full max-w-sm mx-auto p-4 flex flex-col items-center justify-between gap-4">
+                {/* TODO! remove default value for testing */}
+                <Input name="email" type="email" label="Email" defaultValue="test@admin.com" />
+                <Input name="password" type="password" label="Password" defaultValue="password123" />
                 <div className="w-full flex justify-between items-center">
                     <Checkbox>Remember me</Checkbox>
                     <Link as={NextLink} underline="always" size="sm" color="foreground" href="/forgot-password">Forgot Password</Link>
